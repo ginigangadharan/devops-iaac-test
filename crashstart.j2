@@ -1,0 +1,13 @@
+[Unit]
+Description=Python App
+
+
+[Service]
+ExecStart=/etc/init.d/pythonapp start
+ExecReload=/bin/kill -HUP $MAINPID
+KillMode=process
+Restart=on-failure
+RestartSec=12s
+
+[Install]
+WantedBy=multi-user.target
