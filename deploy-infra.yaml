@@ -1,97 +1,41 @@
----
 - hosts: all
+  become: yes
   tasks:
-   - name: Create the directory
-     become: yes
-     file:
-      path: "{{ item }}"
-      state: directory
-     with_items:
-       - /webapps/devops
-       - /var/log/archive 
-   
-   - name: Change ownership
-     become: yes
-     file: 
-      path: /webapps/devops
-      owner: vagrant
-      group: vagrant
-
-   - name: Configure the repo
-     become: yes
-     command: yum -y install epel-release
-     command: yum -y update
-
-
-   - name: Install Ansible/Git/Python
-     become: yes
-     yum:
-       name: "{{ item }}"
-       state: latest
-     with_items: 
-      
-       - git
-       - ansible
-       - python-pip
+    - name: Create the directory
+      become: yes
+      file:
+        path: "{{ item }}"
+        state: directory
+      with_items:
+        - /webapps/devops
+    - name: Install nginx
+      apt: 
+        name: nginx 
+        state: latest
+    - name: Start nginx
+      service:
+        name: nginx
+        state: started
+        enabled: true
+    - name: Copy nginx configuration    
+      copy:
+        src: static_site.cfg
+        dest: /etc/nginx/sites-available/static_site.cfg
+        mode: 755
+      become: yes
     
-   - name: Install the requirements
-     become: yes
-     pip:
-      name: "{{ item }}"
-     with_items: 
-       - Werkzeug
-       - Flask
-   
-   - name: Clone the repo
-     git:
-      repo: https://bitbucket.org/azneita/devops-challenge.git 
-      dest: /webapps/devops
-      clone: yes
-      update: no
-
-   - name: Startup script
-     become: yes
-     copy:
-      src: /vagrant/pythonapp.j2
-      dest: /etc/init.d/pythonapp
-      mode: 0744
-
-   - name: Configure Autostartup  
-     become: yes
-     copy:
-      src: /vagrant/crashstart.j2
-      dest: /etc/systemd/system/pythonapp.service
-      mode: 0664
-
-   - name: Enable Firewall
-     become: yes
-     systemd:
-       name: firewalld
-       state: started
-       enabled: yes
-      
-   - name: Forward Port
-     become: yes
-     firewalld:
-      rich_rule: rule family=ipv4 forward-port port=80 protocol=tcp to-port=5000
-      permanent: true
-      immediate: true
-      state: enabled
-      
-
-   - name: Start the service
-     become: yes
-     systemd:
-      daemon_reload: yes
-      name: pythonapp
-      state: started
-      enabled: yes
-
-
-   - name: Configure logrotate
-     become: yes
-     copy:
-      src: /vagrant/logrotate.j2
-      dest: /etc/logrotate.d/app
-      mode: 0755
-      
+    - name: Create symlink to activate the site.
+      file:
+        src: /etc/nginx/sites-available/static_site.cfg
+        dest: /etc/nginx/sites-enabled/default
+        state: link
+      become: yes
+    - name: Clone website from github
+      git:
+        repo: 'https://github.com/ginigangadharan/vagrant-aws-iaas-demo-site.git'
+        dest: /webapp/main-site
+    - name: restart nginx to load configuratioins
+      service:
+        name: nginx
+        state: restarted
+      become: yes
