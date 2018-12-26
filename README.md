@@ -28,6 +28,10 @@ If issue, install dependencies
 ```
 yum -y install gcc ruby-devel rubygems compass
 ```
+### Pre-requisites
+- Make sure you have a proper security group created in your VPC (under your AWS account) with SSH, HTTP/HTTPS allowed.
+- Make sure you have created a keypair for this purpose and key file (.pem format) has been kept at a secure location on your machine.
+- 
 
 ### Box Image 
 You can choose any box by searching [here](https://app.vagrantup.com/boxes/search?provider=aws)
