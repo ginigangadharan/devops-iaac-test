@@ -1,0 +1,4 @@
+$ vagrant plugin install vagrant-aws
+
+If issue, install dependencies
+$ yum -y install gcc ruby-devel rubygems compass

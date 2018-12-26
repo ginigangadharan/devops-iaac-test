@@ -15,3 +15,14 @@ via SCM tool
 - Explanation of assumptions and design choices.
 
 Test can be submitted via Github, Public Repo URL
+
+##Installation
+
+```
+vagrant plugin install vagrant-aws
+```
+
+If issue, install dependencies
+```
+yum -y install gcc ruby-devel rubygems compass
+```
