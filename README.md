@@ -16,10 +16,12 @@ via SCM tool
 
 Test can be submitted via Github, Public Repo URL
 
-##Installation
+### Installation
 
 ```
-vagrant plugin install vagrant-aws
+$ sudo vagrant plugin install vagrant-aws
+Installing the 'vagrant-aws' plugin. This can take a few minutes...
+Installed the plugin 'vagrant-aws (0.7.2)'!
 ```
 
 If issue, install dependencies
