@@ -13,7 +13,7 @@ Vagrant.configure("2") do |config|
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://vagrantcloud.com/search.
   config.vm.box = "centos/7"
-  config.vm.hostname = "rakuten"
+  config.vm.hostname = "webserver101"
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -70,6 +70,6 @@ Vagrant.configure("2") do |config|
   # SHELL
   config.vm.provision "ansible_local" do |ansible|
     ansible.verbose = "v"
-    ansible.playbook = "rakuten.yaml"
+    ansible.playbook = "deploy-infra.yaml"
   end
 end
