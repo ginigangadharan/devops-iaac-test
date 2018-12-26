@@ -58,3 +58,11 @@ In normal case with VirtualBox or HyberV, we need to give proper box details to 
 You can either add a dummy box(``` vagrant box add aws-dummy https://github.com/mitchellh/vagrant-aws/raw/master/dummy.box ```) or just use any available box image, just like what I did in Vagrantfile.
 
 (You can choose any box by searching [here](https://app.vagrantup.com/boxes/search?provider=aws) for working with VirtualBox, Hyper-V or Docker)
+
+
+### Troubleshooting
+#### vagrant up hang at "==> default: Waiting for SSH to become available..."
+This is due to wrong ssh configurations; you need to make sure
+- Your .pem key has correct permission and ownership
+- You have used correct Security Group (with ssh access) in Vagrantfile
+- You have used correct keypair details in Vagrantfile

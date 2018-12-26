@@ -29,10 +29,9 @@ Vagrant.configure("2") do |config|
 
     aws.instance_type = "t2.micro”
     aws.region = 'us-east-1'
-    # dcos-ami-1538076223 - ami-0000b5f5376a6a4f1
-    # centos/7.4/aws/DCOS-1.11.3/docker-18.03.1-ce/selinux_disabled
+    # dcos-ami-1538076223 - ami-0000b5f5376a6a4f1 - centos/7.4/aws/DCOS-1.11.3/docker-18.03.1-ce/selinux_disabled
     # Ubuntu Server 18.04 LTS (HVM), SSD Volume Type - ami-0bbe6b35405ecebdb (64-bit x86) 
-    aws.ami = 'ami-20be7540'
+    aws.ami = 'ami-0bbe6b35405ecebdb'           # Ubuntu Server 18.04 LTS (HVM) ## Working !!! ##
     aws.security_groups = ['secgrp-for-web']
 
     override.vm.box = "dummy"
