@@ -1,4 +1,4 @@
-# Infra As A Code Demo
+# Vagrant IaaC(Infra As A Code) on AWS - Demo
 
 Provision a new VM via IaC, and deploy a webserver
 via SCM tool
@@ -24,14 +24,27 @@ To test this demo, you need to follow below items.
 
 Refer [Vagrant Documentation](https://www.vagrantup.com/docs/installation/) as well.
 
-### 2. Plugin Installation - vagrant-aws
+### 2. Plugin Installation - vagrant-aws and vagrant-aws-credentials
 Vagrant has default support for VirtualBox, Hyper-V, and Docker. If you want to create your virtual machine on any other environment (like AWS or Azure) still Vagrant has the ability to manage this but only by using  providers plugins. For this case we are using aws and we use **vagrant-aws** plugin.
 You may refer [vagrant-aws](https://github.com/mitchellh/vagrant-aws) in github for the same.
 
+**vagrant-aws-credentials** - This is a nice plugin which allows Vagrant to read your AWS Credentials.
+Read about [vagrant-aws-credentials](https://github.com/datherra/vagrant-aws-credentials)
+
 ```
-$ sudo vagrant plugin install vagrant-aws
+# vagrant plugin install vagrant-aws
 Installing the 'vagrant-aws' plugin. This can take a few minutes...
 Installed the plugin 'vagrant-aws (0.7.2)'!
+
+# vagrant plugin install vagrant-aws-credentials
+Installing the 'vagrant-aws-credentials' plugin. This can take a few minutes...
+Fetching: jmespath-1.4.0.gem (100%)
+Fetching: aws-sigv4-1.0.3.gem (100%)
+Fetching: aws-sdk-core-2.11.197.gem (100%)
+Fetching: aws-sdk-resources-2.11.197.gem (100%)
+Fetching: aws-sdk-2.11.197.gem (100%)
+Fetching: vagrant-aws-credentials-0.1.4.gem (100%)
+Installed the plugin 'vagrant-aws-credentials (0.1.4)'!
 ```
 
 If any issues during installation, install dependencies. (Depends on the workstation machine you are usuing)
