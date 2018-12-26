@@ -45,3 +45,4 @@ Vagrant.configure("2") do |config|
     #ansible.playbook = "deploy-infra.yaml"
   end
 end
+
