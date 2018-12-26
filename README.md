@@ -38,6 +38,14 @@ If any issues during installation, install dependencies. (Depends on the worksta
 ```
 yum -y install gcc ruby-devel rubygems compass
 ```
+
+#### Notes
+For other providers, you can find and install respective plugins; eg:
+```
+vagrant plugin install vagrant-digitalocean 
+vagrant plugin install vagrant-omnibus
+```
+
 ### 3. Setup Provider Environment - AWS
 - Make sure you have a proper security group created in your VPC (under your AWS account) with SSH, HTTP/HTTPS allowed.
 - Make sure you have created a keypair for this purpose and key file (.pem format) has been kept at a secure location on your machine.
