@@ -16,8 +16,7 @@ Vagrant.configure('2') do |config|
     # aws.access_key_id = ENV['AWS_ACCESS_KEY_ID']
     # aws.secret_access_key = ENV['AWS_SECRET_ACCESS_KEY']
     # or provide it directly here
-    aws.access_key_id = 'AKIAJLKSBHIU7CT76O5Q'
-    aws.secret_access_key = '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'
+
     # Specify SSH keypair to use
     aws.keypair_name = 'ak-20181226-us-west-2'
     # instance type
