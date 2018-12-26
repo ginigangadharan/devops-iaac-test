@@ -16,7 +16,17 @@ via SCM tool
 
 Test can be submitted via Github, Public Repo URL
 
-### Installation
+## Pre-requisites
+To test this demo, you need to follow below items.
+
+### Vagrant Installation
+[Download](https://www.vagrantup.com/downloads.html) and install vagrant for on your host/workstation. (Your laptop or a control server)
+
+Refer [Vagrant Documentation](https://www.vagrantup.com/docs/installation/) as well.
+
+### Plugin Installation - vagrant-aws
+Vagrant has default support for VirtualBox, Hyper-V, and Docker. If you want to create your virtual machine on any other environment (like AWS or Azure) still Vagrant has the ability to manage this but only by using  providers plugins. For this case we are using aws and we use **vagrant-aws** plugin.
+You may refer [vagrant-aws](https://github.com/mitchellh/vagrant-aws) in github for the same.
 
 ```
 $ sudo vagrant plugin install vagrant-aws
@@ -24,11 +34,11 @@ Installing the 'vagrant-aws' plugin. This can take a few minutes...
 Installed the plugin 'vagrant-aws (0.7.2)'!
 ```
 
-If issue, install dependencies
+If any issues during installation, install dependencies. (Depends on the workstation machine you are usuing)
 ```
 yum -y install gcc ruby-devel rubygems compass
 ```
-### Pre-requisites
+### Setup Provider Environment - AWS
 - Make sure you have a proper security group created in your VPC (under your AWS account) with SSH, HTTP/HTTPS allowed.
 - Make sure you have created a keypair for this purpose and key file (.pem format) has been kept at a secure location on your machine.
 - 
