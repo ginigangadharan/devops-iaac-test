@@ -28,3 +28,6 @@ If issue, install dependencies
 ```
 yum -y install gcc ruby-devel rubygems compass
 ```
+
+### Box Image 
+You can choose any box by searching [here](https://app.vagrantup.com/boxes/search?provider=aws)
