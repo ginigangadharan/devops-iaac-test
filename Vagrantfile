@@ -1,7 +1,13 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# Require the AWS provider plugin
 require 'vagrant-aws'
+
 
 # Create and configure the AWS instance(s)
 Vagrant.configure('2') do |config|
+ 
   # config.vm.box = 'dummy'
   config.vm.box = 'perconajayj/centos-x86_64'
   # config.vm.hostname = "webserver101"
