@@ -64,6 +64,14 @@ aws_secret_access_key=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
 aws_access_key_id=AKIAJVOHCIQ72EXAMPLE
 aws_secret_access_key=7l/j/hxXeEA77/7e+7ZvLLBQW9SxdcEXAMPLEKEY
 ```
+Also add profile in ```config``` file.
+```
+# cat config 
+[default] 
+region=us-west-2 output=json 
+[devops] 
+region=us-west-2 output=json
+```
 
 #### Box Image 
 In normal case with VirtualBox or HyberV, we need to give proper box details to load the image (like a template or clone). But in this case we are using AWS AMI (Amazon Machine Images) and config.vm.box is just for a vagrant syntax purpose. 
