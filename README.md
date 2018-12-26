@@ -87,11 +87,21 @@ You can either add a dummy box(``` vagrant box add aws-dummy https://github.com/
 (You can choose any box by searching [here](https://app.vagrantup.com/boxes/search?provider=aws) for working with VirtualBox, Hyper-V or Docker)
 
 ### Create Instance
+Now, we will switch to the Vagrant project directory and create VM.
+```
+vagrant destroy
+```
+Wait for vagrant to create instance and provision software/configurations using ansible (we have used ansible as provision method).
 
 #### Note 
 If you have changes in provisioning configuration (when VM is up and running), you can try to apply the same by below method (without killing and starting VM again) 
 ```
 vagrant reload --provision
+```
+
+#### Stop or Delete VM
+```
+vagrant destroy
 ```
 
 ### Troubleshooting
