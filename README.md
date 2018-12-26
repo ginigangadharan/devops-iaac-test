@@ -44,6 +44,8 @@ yum -y install gcc ruby-devel rubygems compass
 - 
 
 #### Box Image 
-In normal case with VirtualBox or HyberV, we need to give proper box details to load the image (like a template or clone). But in this case we are using AWS AMI (Amazon Machine Images) and config.vm.box is just for a vagrant syntax purpose.
+In normal case with VirtualBox or HyberV, we need to give proper box details to load the image (like a template or clone). But in this case we are using AWS AMI (Amazon Machine Images) and config.vm.box is just for a vagrant syntax purpose. 
+
+You can either add a dummy box(''' vagrant box add aws-dummy https://github.com/mitchellh/vagrant-aws/raw/master/dummy.box ''') or just use any available box image, just like what I did in Vagrantfile.
 
 (You can choose any box by searching [here](https://app.vagrantup.com/boxes/search?provider=aws) for working with VirtualBox, Hyper-V or Docker)
