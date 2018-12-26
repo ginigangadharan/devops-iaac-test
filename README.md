@@ -55,6 +55,14 @@ vagrant plugin install vagrant-omnibus
 # mkdir ~/.aws
 # cd ~/.aws/
 
+[root@ansible-box-v1 .aws]# aws configure --profile devops
+AWS Access Key ID [None]: AKIAJVOHCIQ72EXAMPLE
+AWS Secret Access Key [None]: 7l/j/hxXeEA77/7e+7ZvLLBQW9SxdcEXAMPLEKEY
+Default region name [None]: us-west-2
+Default output format [None]: json
+```
+Verify the files
+```
 # cat credentials 
 [default]
 aws_access_key_id=AKIAIOSFODNN7EXAMPLE
@@ -63,9 +71,7 @@ aws_secret_access_key=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
 [devops]
 aws_access_key_id=AKIAJVOHCIQ72EXAMPLE
 aws_secret_access_key=7l/j/hxXeEA77/7e+7ZvLLBQW9SxdcEXAMPLEKEY
-```
-Also add profile in ```config``` file.
-```
+
 # cat config 
 [default] 
 region=us-west-2 output=json 
