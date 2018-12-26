@@ -49,6 +49,7 @@ vagrant plugin install vagrant-omnibus
 ### 3. Setup Provider Environment - AWS
 - Make sure you have a proper security group created in your VPC (under your AWS account) with SSH, HTTP/HTTPS allowed.
 - Make sure you have created a keypair for this purpose and key file (.pem format) has been kept at a secure location on your machine.
+- Get your access credentials from AWS console. ([Refer this quick notes](https://www.techbeatly.com/2018/03/how-to-install-and-configure-aws-command-line-interface-cli.html/#how-to-get-aws-credentials))
 - 
 
 #### Box Image 
