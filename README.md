@@ -49,8 +49,21 @@ vagrant plugin install vagrant-omnibus
 ### 3. Setup Provider Environment - AWS
 - Make sure you have a proper **security group** created in your VPC (under your AWS account) with SSH, HTTP/HTTPS allowed.
 - Make sure you have created a **keypair** for this purpose and key file (**.pem** format) has been kept at a secure location on your machine.
-- Get your **access credentials** from AWS console. ([Refer my AWI CLI installation article](https://www.techbeatly.com/2018/03/how-to-install-and-configure-aws-command-line-interface-cli.html/#how-to-get-aws-credentials))
-- 
+- Get your **access credentials** from AWS console. ([Refer my AWI CLI installation article](https://www.techbeatly.com/2018/03/how-to-install-and-configure-aws-command-line-interface-cli.html/#how-to-get-aws-credentials)). Add the same in ```~/.aws/credentials``` file.
+
+```
+# mkdir ~/.aws
+# cd ~/.aws/
+
+# cat credentials 
+[default]
+aws_access_key_id=AKIAIOSFODNN7EXAMPLE
+aws_secret_access_key=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+
+[devops]
+aws_access_key_id=AKIAJVOHCIQ72EXAMPLE
+aws_secret_access_key=7l/j/hxXeEA77/7e+7ZvLLBQW9SxdcEXAMPLEKEY
+```
 
 #### Box Image 
 In normal case with VirtualBox or HyberV, we need to give proper box details to load the image (like a template or clone). But in this case we are using AWS AMI (Amazon Machine Images) and config.vm.box is just for a vagrant syntax purpose. 
