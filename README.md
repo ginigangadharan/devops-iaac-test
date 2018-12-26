@@ -1,4 +1,4 @@
-# Vagrant IaaC(Infra As A Code) on AWS - Demo
+# Vagrant IaaC (Infra As A Code) on AWS - Demo
 
 Provision a new VM via IaC, and deploy a webserver
 via SCM tool
