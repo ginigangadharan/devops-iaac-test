@@ -110,6 +110,7 @@ We have used **ansible** as provisioner and created a playbook called [deploy-in
 13. Disallow root SSH access
 14. Collect Public Hostname/Url to access
 15. Verify website access
+
 And we have 2 handlers in playbook
 1. Restart ssh
 2. Show public url
