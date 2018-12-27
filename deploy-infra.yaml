@@ -44,7 +44,18 @@
         state: restarted
       become: yes
     
-    - name: Get the public hostname of instance 
-      get_url:
+#    - name: Get the public hostname of instance 
+#      get_url:
+#        url: http://169.254.169.254/latest/meta-data/public-hostname
+#        dest: /tmp/abc
+#        mode: 755
+
+    - name: Show Public Hostname/Url to access
+      uri: 
         url: http://169.254.169.254/latest/meta-data/public-hostname
-        
+        return_content: yes
+      register: aws_meta
+    - name: Show meta
+      debug:
+        msg: "Url : {{ aws_meta }}"
+
