@@ -2,26 +2,24 @@
 - hosts: all
   become: yes
   tasks:
-    - name: Create the directory
+    - name: Create the directory for storing our website (/webapps/devops)
       become: yes
       file:
-        path: "{{ item }}"
+        path: /webapps/devops
         state: directory
-      with_items:
-        - /webapps/devops
 
-    - name: Install nginx
+    - name: Install nginx server
       apt: 
         name: nginx 
         state: latest
 
-    - name: Start nginx
+    - name: Start nginx service
       service:
         name: nginx
         state: started
         enabled: true
 
-    - name: Copy nginx configuration    
+    - name: Copy nginx configuration
       copy:
         src: static_site.cfg
         dest: /etc/nginx/sites-available/static_site.cfg
