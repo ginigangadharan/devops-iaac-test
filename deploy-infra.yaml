@@ -43,20 +43,20 @@
         name: nginx
         state: restarted
       become: yes
-    
-#    - name: Get the public hostname of instance 
-#      get_url:
-#        url: http://169.254.169.254/latest/meta-data/public-hostname
-#        dest: /tmp/abc
-#        mode: 755
 
-    - name: Show Public Hostname/Url to access
+    - name: Collect Public Hostname/Url to access
       uri: 
         url: http://169.254.169.254/latest/meta-data/public-hostname
         dest: /tmp/abc
         return_content: yes
       register: aws_meta
-    - name: Show meta
+    
+    - name: Verify webiste access
+      uri:
+        url: "{{ aws_meta.content }}"
+        status_code: 200
+      
+    - name: Show Public Hostname/Url to access website
       debug:
-        msg: "Url : {{ aws_meta.content }}"
+        msg: "Your website can be accessed using : {{ aws_meta.content }}"
 
