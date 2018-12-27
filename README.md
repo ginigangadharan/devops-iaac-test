@@ -110,10 +110,10 @@ We have used **ansible** as provisioner and created a playbook called [deploy-in
 - When ```vagrant reload --provision`` is called.
 
 ### Let's create the VM
-Now, we will switch to the Vagrant project directory and create the VM.
+Now, we will switch to the Vagrant project directory (vagrant-web) and create the VM.
 ```
 # cd vagrant-web
-# vagrant destroy
+# vagrant up
 ```
 Wait for vagrant to create instance and provision software/configurations using ansible.
 
