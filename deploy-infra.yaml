@@ -2,10 +2,10 @@
 - hosts: all
   become: yes
   tasks:
-    - name: Create the directory for storing our website (/webapps/devops)
+    - name: Create the directory for storing our website (/webapp/main-site)
       become: yes
       file:
-        path: /webapps/devops
+        path: /webapp/main-site
         state: directory
 
     - name: Install nginx server
