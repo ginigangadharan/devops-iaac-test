@@ -13,7 +13,7 @@ git clone https://github.com/ginigangadharan/vagrant-aws-iaas-demo.git
 4. switch to ```vagrant-aws-iaas-demo``` directory and run ```vagrant up```
 
 
-## Pre-requisites
+## Step 1 - Configure Pre-requisites
 To test this demo, you need to follow below items.
 
 ### 1. Vagrant Installation
@@ -81,17 +81,17 @@ You can either add a dummy box(``` vagrant box add aws-dummy https://github.com/
 
 (You can choose any box by searching [here](https://app.vagrantup.com/boxes/search?provider=aws) for working with VirtualBox, Hyper-V or Docker)
 
-## Create our Virtual Machine - AWS Instance
+## Step 2 - Create our Virtual Machine - AWS Instance
 Vagrant is managed inside a project directory (anywhere at your convenience, eg: your home dir) where we save Vagrantfile, other provisioning scripts etc (bash or ansible playbooks).
 
-### Create Vagrantfile
-We need to create a **Vagrantfile** where we specify what type of VM we are creating, what are the specifications needed etc. You may refer [Vagrantfile](Vagrantfile) in this project for reference. (Items are explained inside the file)
+### Vagrantfile
+We have **Vagrantfile** where we specify what type of VM we are creating, what are the specifications needed etc. You may refer [Vagrantfile](Vagrantfile) in this project for reference. (Items are explained inside the file)
 
 ### Provisioning 
 Vagrant Provisioners will help to automatically install software, update configurations etc as part of the vagrant up process. You can use any available provisioning method as Vagrant will support most of the basic told and configuration management softwares. (eg: bash, ansible, puppet, chef etc). 
 Refer [Provisioning doc](https://www.vagrantup.com/docs/provisioning/)
 
-We have used **ansible** as provisioner and created a playbook called [deploy-infra.yaml](deploy-infra.yaml) in which we have mentioned what are the configurations we need on the server (VM) once its created. All tasks in playbook are self explanatory but i am listing down them for reference.
+We have used **Ansible** as provisioner and created a playbook called [deploy-infra.yaml](deploy-infra.yaml) in which we have mentioned what are the configurations we need on the server (VM) once its created. All tasks in playbook are self explanatory but i am listing down them for reference.
 1. Create the directory for storing our website (/webapp/main-site)
 2. Install nginx server
 3. Start nginx service
