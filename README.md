@@ -7,6 +7,9 @@ This **IaaC** will create a Virtual Machine in **AWS** in which **nginx** webser
 
 ## How to use this repo - Quick Overview
 
+[Step 1 - Configure Pre-requisites](#step-1---configure-pre-requisites)
+1. Vagrant Installation
+
 1. Install Vagrant
 2. Configure AWS credentials.
 3. Clone this repo to your working directory
@@ -20,12 +23,12 @@ See below for detailed instructions.
 ## Step 1 - Configure Pre-requisites
 To test this demo, you need to follow below items.
 
-### 1. Vagrant Installation
+### 1.1 Vagrant Installation
 [Download](https://www.vagrantup.com/downloads.html) and install vagrant on your host/workstation. (Your laptop or a control server)
 
 Refer [Vagrant Documentation](https://www.vagrantup.com/docs/installation/) for more details.
 
-### 2. Plugin Installation - vagrant-aws
+### 1.2 Plugin Installation - vagrant-aws
 Vagrant is coming with support for VirtualBox, Hyper-V, and Docker. If you want to create your virtual machine on any other environment (like AWS or Azure) Vagrant still has the ability to manage this but only by using  providers plugins. For this case we are using aws and we use **vagrant-aws** plugin.
 You may refer [vagrant-aws](https://github.com/mitchellh/vagrant-aws) in github for the same.
 
@@ -45,7 +48,7 @@ vagrant plugin install vagrant-digitalocean
 vagrant plugin install vagrant-omnibus
 ```
 
-### 3. Setup Provider Environment - AWS
+### 1.3 Setup Provider Environment - AWS
 3.1 Make sure you have a proper **security group** created in your VPC (under your AWS account) with SSH, HTTP/HTTPS allowed.
 3.2 Make sure you have created a **keypair** for this purpose and key file (**.pem** format) has been kept at a secure location on your machine.
 3.3 Get your **access credentials** from AWS console. ([Refer my AWI CLI installation article](https://www.techbeatly.com/2018/03/how-to-install-and-configure-aws-command-line-interface-cli.html/#how-to-get-aws-credentials)). Add the same in ```~/.aws/credentials``` file.
@@ -88,10 +91,10 @@ You can either add a dummy box(``` vagrant box add aws-dummy https://github.com/
 ## Step 2 - Create our Virtual Machine - AWS Instance
 Vagrant is managed inside a project directory (anywhere at your convenience, eg: your home dir) where we save Vagrantfile, other provisioning scripts etc (bash or ansible playbooks).
 
-### Vagrantfile
+### 2.1 Vagrantfile
 We have **Vagrantfile** where we specify what type of VM we are creating, what are the specifications needed etc. You may refer [Vagrantfile](Vagrantfile) in this project for reference. (Items are explained inside the file)
 
-### Provisioning 
+### 2.2 Provisioning 
 Vagrant Provisioners will help to automatically install software, update configurations etc as part of the vagrant up process. You can use any available provisioning method as Vagrant will support most of the basic told and configuration management softwares. (eg: bash, ansible, puppet, chef etc). 
 Refer [Provisioning doc](https://www.vagrantup.com/docs/provisioning/)
 
@@ -122,7 +125,7 @@ And we have 2 handlers in playbook
 - When ```vagrant provision``` is used on a running environment.
 - When ```vagrant reload --provision``` is called. (If you have a change in provision script, just edit the yaml file and run this.)
 
-### Let's create the VM
+### 2.3 Let's create the VM
 Now, we will switch to the Vagrant project directory (vagrant-web) and create the VM.
 ```
 # cd vagrant-web
@@ -130,7 +133,7 @@ Now, we will switch to the Vagrant project directory (vagrant-web) and create th
 ```
 Wait for vagrant to create instance and provision software/configurations using ansible.
 
-### Verify our instance
+### 2.4 Verify our instance
 If all goes well, you will see success message as well as a **public hostname url** in this case. We can access the url from browser and verify the website. (We have already a check inside the playbook to verify url access)
 
 Also you can access the instance using ssh as below.
@@ -138,7 +141,7 @@ Also you can access the instance using ssh as below.
 # vagrant ssh
 ```
 
-### Stop or Delete VM
+### 2.5 Stop or Delete VM
 ```
 # vagrant destroy
 ```
