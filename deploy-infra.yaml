@@ -44,6 +44,48 @@
         state: restarted
       become: yes
 
+    - name: Install ufw (firewall)
+      apt:
+       name: ufw
+       state: latest
+
+    - name: Start Firewall service
+      service:
+        name: ufw
+        state: started
+        enabled: true
+
+    - name: Setup ufw and enable for reboot
+      ufw:
+        state: enabled 
+        policy: deny
+
+    - name: Enable ssh and http ports
+      ufw:
+        rule: allow
+        port: "{{ item }}"
+        proto: tcp
+      with_items:
+        - 22
+        - 80
+
+    # Lockdown ssh access
+    - name: Disallow password authentication
+      lineinfile: 
+        dest: /etc/ssh/sshd_config
+        regexp: "^PasswordAuthentication"
+        line: "PasswordAuthentication no"
+        state: present
+      notify: restart ssh
+
+    - name: Disallow root SSH access
+      lineinfile:
+        dest: /etc/ssh/sshd_config
+        regexp: "^PermitRootLogin"
+        line: "PermitRootLogin no"
+        state: present
+      notify: restart ssh
+
     - name: Collect Public Hostname/Url to access
       uri: 
         url: http://169.254.169.254/latest/meta-data/public-hostname
@@ -59,4 +101,9 @@
     - name: Show Public Hostname/Url to access website
       debug:
         msg: "Your website can be accessed using : {{ aws_meta.content }}"
-
+        
+  handlers:
+    - name: restart ssh
+      service:
+        name: sshd
+        state: restarted
