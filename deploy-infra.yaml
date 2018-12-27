@@ -92,18 +92,20 @@
         dest: /tmp/abc
         return_content: yes
       register: aws_meta
+      notify: show public url
     
     - name: Verify webiste access
       uri:
         url: "http://{{ aws_meta.content }}"
         status_code: 200
       
-    - name: Show Public Hostname/Url to access website
-      debug:
-        msg: "Your website can be accessed using : {{ aws_meta.content }}"
-        
   handlers:
     - name: restart ssh
       service:
         name: sshd
         state: restarted
+
+   # Show Public Hostname/Url to access website
+    - name: show public url
+      debug:
+        msg: "Your website can be accessed using url : {{ aws_meta.content }}"
