@@ -53,7 +53,7 @@
     
     - name: Verify webiste access
       uri:
-        url: "{{ aws_meta.content }}"
+        url: "http://{{ aws_meta.content }}"
         status_code: 200
       
     - name: Show Public Hostname/Url to access website
