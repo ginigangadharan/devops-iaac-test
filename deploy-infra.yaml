@@ -58,5 +58,5 @@
       register: aws_meta
     - name: Show meta
       debug:
-        msg: "Url : {{ aws_meta.stdout }}"
+        msg: "Url : {{ aws_meta.content }}"
 
