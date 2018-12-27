@@ -7,12 +7,6 @@ This **IaaC** will create a Virtual Machine in **AWS** in which **nginx** webser
 
 ## How to use this repo - Quick Overview
 
-[Step 1 - Configure Pre-requisites](#step-1---configure-pre-requisites)
-
-  [1.1 Vagrant Installation](#11-vagrant-installation)
-  
-  [1.2 Plugin Installation - vagrant-aws](#12-plugin-installation---vagrant-aws)
-
 1. Install Vagrant
 2. Configure AWS credentials.
 3. Clone this repo to your working directory
