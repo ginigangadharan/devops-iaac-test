@@ -1,20 +1,20 @@
 # Vagrant IaaC (Infra As A Code) on AWS - Demo
+This is a simple repo to demonstrate Vagrant working with AWS. We have implement **IaaC (Infra-As-A-Code)** and CaaC(Configuration-as-code) using Vagrant and Ansible.
+This **IaaC** will create a Virtual Machine in **AWS** in which **nginx** webserver will be installed automatically. Also, website content will be copied from [github sample site](https://github.com/ginigangadharan/vagrant-aws-iaas-demo-site.git). We will also enable firewll and root login security automatically using ansible. 
 
-Provision a new VM via IaC, and deploy a webserver
-via SCM tool
-### Write Infrastructure-as-code and configuration-as-code recipes (using your preferred orchestration software) to:
-- Create the server (can be AWS or Azure based)
-- Configure an OS image (your choice) appropriately.
-- Deploy Nginx webserver.
-- Make the Nginx webserver available on port 80.
-- Ensure that the server is locked down and secure.
+## How to use this repo - Quick Overview
 
-### Provide documentation:
-- Instructions for the reviewer which explain how your code should beexecuted
-- Requirements for running. (Azure account? Base images? Other tooling pre-installed?)
-- Explanation of assumptions and design choices.
+### Install Vagrant
+Detailed Instruction given below.
 
-Test can be submitted via Github, Public Repo URL
+### Configure AWS credentials.
+Detailed Instruction given below.
+
+### Clone this repo to your working directory
+```
+git clone https://github.com/ginigangadharan/vagrant-aws-iaas-demo.git
+```
+
 
 ## Pre-requisites
 To test this demo, you need to follow below items.
@@ -139,7 +139,7 @@ Also you can access the instance using ssh as below.
 
 ### Stop or Delete VM
 ```
-vagrant destroy
+# vagrant destroy
 ```
 
 ### Troubleshooting
