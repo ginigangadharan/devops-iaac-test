@@ -103,6 +103,7 @@ We have used **ansible** as provisioner and created a playbook called [deploy-in
 4. Copy nginx configuration ([static_site.cfg](static_site.cfg) to /etc/nginx/sites-available/static_site.cfg on VM)
 5. Create symlink to activate the site (from /etc/nginx/sites-available to /etc/nginx/sites-enabled/)
 6. Clone website from github to /webapp/main-site
+7. Restart nginx to load configuratioins
 
 ### 
 
