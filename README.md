@@ -3,7 +3,8 @@ This is a simple repo to demonstrate Vagrant working with AWS. We have implement
 This **IaaC** will create a Virtual Machine in **AWS** in which **nginx** webserver will be installed automatically. Also, website content will be copied from [github sample site](https://github.com/ginigangadharan/vagrant-aws-iaas-demo-site.git). We will also enable firewll and root login security automatically using ansible. 
 
 ## How to use this repo - Quick Overview
-1.Install Vagrant
+
+1. Install Vagrant
 2. Configure AWS credentials.
 3. Clone this repo to your working directory
 ```
