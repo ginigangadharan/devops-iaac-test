@@ -34,7 +34,7 @@ Installing the 'vagrant-aws' plugin. This can take a few minutes...
 Installed the plugin 'vagrant-aws (0.7.2)'!
 ```
 
-If any issues during installation, install dependencies. (Depends on the workstation machine you are usuing)
+*If any issues during installation, then try with installing dependencies. (Depends on the workstation machine you are usuing, packages and version may change)*
 ```
 yum -y install gcc ruby-devel rubygems compass
 ```
@@ -52,17 +52,17 @@ vagrant plugin install vagrant-omnibus
 - Get your **access credentials** from AWS console. ([Refer my AWI CLI installation article](https://www.techbeatly.com/2018/03/how-to-install-and-configure-aws-command-line-interface-cli.html/#how-to-get-aws-credentials)). Add the same in ```~/.aws/credentials``` file.
 
 ```
-# mkdir ~/.aws
-# cd ~/.aws/
-
-[root@ansible-box-v1 .aws]# aws configure --profile devops
+# aws configure --profile devops
 AWS Access Key ID [None]: AKIAJVOHCIQ72EXAMPLE
 AWS Secret Access Key [None]: 7l/j/hxXeEA77/7e+7ZvLLBQW9SxdcEXAMPLEKEY
 Default region name [None]: us-west-2
 Default output format [None]: json
 ```
-Verify the files
+
+Verify content in the files
 ```
+# mkdir ~/.aws
+# cd ~/.aws/
 # cat credentials 
 [default]
 aws_access_key_id=AKIAIOSFODNN7EXAMPLE
@@ -86,10 +86,33 @@ You can either add a dummy box(``` vagrant box add aws-dummy https://github.com/
 
 (You can choose any box by searching [here](https://app.vagrantup.com/boxes/search?provider=aws) for working with VirtualBox, Hyper-V or Docker)
 
-### Create Instance
+## Create our Virtual Machine - Instance in AWS
+Vagrant is managed inside a project directory (anywhere at your convenience, eg: your home dir) where we save Vagrantfile, other provisioning scripts (bash or ansible playbooks etc).
+
+### Create Vagrantfile
+We need to create a **Vagrantfile** where we specify what type of VM we are creating, what are the specifications needed etc. You may refer [Vagrantfile](Vagrantfile) in this project for reference. (Items are explained inside the file)
+
+### Provisioning 
+Vagrant Provisioners will help to automatically install software, update configurations etc as part of the vagrant up process. You can use any available provisioning method as Vagrant will support most of the basic told and configuration management softwares. (eg: bash, ansible, puppet, chef etc). 
+Refer [Provisioning doc](https://www.vagrantup.com/docs/provisioning/)
+
+We have used **ansible** as provisioner and create a playbook called [deploy-infra.yaml](deploy-infra.yaml) in which we have mentioned what are the configurations we need on the server (VM) once its created. (All tasks in playbook are self explanatory)
+
+### 
+
+
+On the first vagrant up that creates the environment, provisioning is run. If the environment was already created and the up is just resuming a machine or booting it up, they will not run unless the --provision flag is explicitly provided.
+
+When vagrant provision is used on a running environment.
+
+When vagrant reload --provision is called. The --provision flag must be present to force provisioning.
+
+
+
 Now, we will switch to the Vagrant project directory and create VM.
 ```
-vagrant destroy
+# cd vagrant-web
+# vagrant destroy
 ```
 Wait for vagrant to create instance and provision software/configurations using ansible (we have used ansible as provision method).
 
