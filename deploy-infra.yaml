@@ -1,42 +1,48 @@
+---
 - hosts: all
   become: yes
   tasks:
-    - name: Create the directory      
+    - name: Create the directory
+      become: yes
       file:
         path: "{{ item }}"
         state: directory
       with_items:
         - /webapps/devops
-        
+
     - name: Install nginx
       apt: 
         name: nginx 
         state: latest
+
     - name: Start nginx
       service:
         name: nginx
         state: started
         enabled: true
+
     - name: Copy nginx configuration    
       copy:
         src: static_site.cfg
         dest: /etc/nginx/sites-available/static_site.cfg
         mode: 755
+      become: yes
     
     - name: Create symlink to activate the site.
       file:
         src: /etc/nginx/sites-available/static_site.cfg
         dest: /etc/nginx/sites-enabled/default
         state: link
-     
+      become: yes
+
     - name: Clone website from github
       git:
         repo: 'https://github.com/ginigangadharan/vagrant-aws-iaas-demo-site.git'
         dest: /webapp/main-site
-        
+
     - name: restart nginx to load configuratioins
       service:
         name: nginx
         state: restarted
-
+      become: yes
 
