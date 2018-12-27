@@ -97,7 +97,12 @@ Vagrant Provisioners will help to automatically install software, update configu
 Refer [Provisioning doc](https://www.vagrantup.com/docs/provisioning/)
 
 We have used **ansible** as provisioner and created a playbook called [deploy-infra.yaml](deploy-infra.yaml) in which we have mentioned what are the configurations we need on the server (VM) once its created. All tasks in playbook are self explanatory but i am listing down them for reference.
-1. 
+1. Create the directory for storing our website (/webapps/devops)
+2. Install nginx server
+3. Start nginx service
+4. Copy nginx configuration ([static_site.cfg](static_site.cfg) to /etc/nginx/sites-available/static_site.cfg on VM)
+5. Create symlink to activate the site (from /etc/nginx/sites-available to /etc/nginx/sites-enabled/)
+6. Clone website from github to /webapp/main-site
 
 ### 
 
