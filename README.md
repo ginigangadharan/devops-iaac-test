@@ -130,8 +130,9 @@ Now, we will switch to the Vagrant project directory (vagrant-web) and create th
 Wait for vagrant to create instance and provision software/configurations using ansible.
 
 ### Verify our instance
-If all goes well, you will see success message as well as a public hostname url in this case. (for accessing the website)
-We can access the url from browser and verify the website. Also you can access the instance using ssh as below.
+If all goes well, you will see success message as well as a **public hostname url** in this case. We can access the url from browser and verify the website. (We have already a check inside the playbook to verify url access)
+
+Also you can access the instance using ssh as below.
 ```
 # vagrant ssh
 ```
