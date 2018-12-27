@@ -94,7 +94,7 @@
       register: aws_meta
       notify: show public url
     
-    - name: Verify webiste access
+    - name: Verify website access
       uri:
         url: "http://{{ aws_meta.content }}"
         status_code: 200
