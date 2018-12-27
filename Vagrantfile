@@ -3,46 +3,46 @@ require 'vagrant-aws'
 
 # Create and configure the AWS instance(s)
 Vagrant.configure('2') do |config|
-  # config.vm.box = 'dummy'
+  
+  # Since we are using AWS AMI, below config.vm.box is just for syntax purpose.
   config.vm.box = 'perconajayj/centos-x86_64'
+
+  # config.vm.hostname is not mandatory as AWS will handle the same.
   # config.vm.hostname = "webserver101"
 
-  # Specify AWS provider configuration
+  # Specify AWS provider configurations
   config.vm.provider 'aws' do |aws, override|
 
-    # Read AWS authentication information from environment variables
+    # vagrant-aws plugin will read AWS authentication information 
+    # 1) from environment variables or 
+    # 2) from AWS credentials under $HOME/.aws/
+    # We have configured option 2 here, so just need to mention which profile to use.
+
     # aws.access_key_id = ENV['AWS_ACCESS_KEY_ID']
     # aws.secret_access_key = ENV['AWS_SECRET_ACCESS_KEY']
-    # or provide it directly here
-    # aws.access_key_id = 'AKIAJLKSBHIU7CT76O5Q'
-    # aws.secret_access_key = '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'
-    # aws.aws_dir = ENV['HOME'] + "/.aws/"
     aws.aws_profile = "devops"
 
-    # Specify SSH keypair to use
+    # Specify AWS SSH keypair to use
     aws.keypair_name = 'pe-20181226-us-west-2'
 
-    # instance type
+    # Specify AWS instance type to use
     aws.instance_type = 't2.micro'
 
-    # Specify region, and zone
+    # Specify AWS region
     aws.region = 'us-west-2'
-    # aws.availability_zone = 'us-west-2a'
+    
+    # Specify AWS AMI ID 
+    aws.ami = 'ami-0bbe6b35405ecebdb'  		# Ubuntu Server 18.04 LTS (HVM) 
 
-    # Specify region, AMI ID, and security group(s)
-    # Amazon Linux AMI 2018.03.0 (HVM), SSD Volume Type - ami-01e24be29428c15b2
-
-    # aws.ami = 'ami-01e24be29428c15b2'
-    aws.ami = 'ami-0bbe6b35405ecebdb'  		# Ubuntu Server 18.04 LTS (HVM) ## Working !!! ##
-
+    # Specify AWS security group(s). Make sure you have ssh, http, https enabled for the same.
     aws.security_groups = ['secgrp-for-web']
 
     # Specify username and private key path
     override.ssh.username = 'ubuntu'
-    # override.ssh.username = "ec2-user"
     override.ssh.private_key_path = '~/.ssh/pe-20181226-us-west-2.pem'
   end
 
+  # Specify Ansible as provisioner and provide the playbook details.
   config.vm.provision "ansible_local" do |ansible|
     ansible.verbose = "v"
     ansible.playbook = "deploy-infra.yaml"

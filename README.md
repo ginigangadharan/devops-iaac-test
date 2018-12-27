@@ -105,9 +105,9 @@ We have used **ansible** as provisioner and created a playbook called [deploy-in
 
 
 #### When provisioning happens ?
-- When we run first ```*vagrant up``` provisioning is run after creating this instance. 
+- When we run first ```vagrant up``` provisioning is run after creating this instance. 
 - When ```vagrant provision``` is used on a running environment.
-- When ```vagrant reload --provision`` is called.
+- When ```vagrant reload --provision``` is called. (If you have a change in provision script, just edit the yaml file and run this.)
 
 ### Let's create the VM
 Now, we will switch to the Vagrant project directory (vagrant-web) and create the VM.
