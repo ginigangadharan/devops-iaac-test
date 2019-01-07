@@ -92,7 +92,7 @@ Vagrant is managed inside a project directory (anywhere at your convenience, eg:
 We have **Vagrantfile** where we specify what type of VM we are creating, what are the specifications needed etc. You may refer [Vagrantfile](Vagrantfile) in this project for reference. (Items are explained inside the file)
 
 ### 2.2 Provisioning 
-Vagrant Provisioners will help to automatically install software, update configurations etc as part of the vagrant up process. You can use any available provisioning method as Vagrant will support most of the basic told and configuration management softwares. (eg: bash, ansible, puppet, chef etc). 
+Vagrant Provisioners will help to automatically install software, update configurations etc as part of the vagrant up process. You can use any available provisioning method as Vagrant will support most of the build and configuration management softwares. (eg: bash, ansible, puppet, chef etc). 
 Refer [Provisioning doc](https://www.vagrantup.com/docs/provisioning/)
 
 We have used **Ansible** as provisioner and created a playbook called [deploy-infra.yaml](deploy-infra.yaml) in which we have mentioned what are the configurations we need on the server (VM) once its created. All tasks in playbook are self explanatory but i am listing down them for reference.
