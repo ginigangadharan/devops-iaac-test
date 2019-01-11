@@ -1,5 +1,5 @@
 # Vagrant IaaC (Infra as a Code) on AWS - Demo
-This is a simple repo to demonstrate how to implement IaaC using Vagrant on AWS. We have implemented **IaaC (Infra-As-A-Code)** and CaaC(Configuration-as-code) using Vagrant and Ansible.
+This is a simple repo to demonstrate how to implement IaaC using Vagrant on AWS. We have implemented **IaaC (Infra-As-A-Code)** and CaaC(Configuration-as-code) using Vagrant and Ansible. 
 
 Any questions : [email](mailto:net.gini@gmail.com) | [LinkedIn](http://bit.ly/gineesh) | [www.techbeatly.com](www.techbeatly.com)
 
