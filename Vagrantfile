@@ -1,4 +1,4 @@
-# Require the AWS provider plugin
+# Require the AWS provider plugin 
 require 'vagrant-aws'
 
 # Create and configure the AWS instance(s)
