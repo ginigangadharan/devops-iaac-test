@@ -2,7 +2,7 @@
 - hosts: all
   become: yes
   tasks:
-    - name: Create the directory for storing our website (/webapp/main-site)
+    - name: Create directory for storing our website (/webapp/main-site)
       become: yes
       file:
         path: /webapp/main-site
