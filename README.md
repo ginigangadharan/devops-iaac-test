@@ -5,6 +5,24 @@ Any questions : [email](mailto:net.gini@gmail.com) | [LinkedIn](http://bit.ly/gi
 
 This **IaaC** will create a Virtual Machine in **AWS** in which **nginx** webserver will be installed automatically. Also, website content will be copied from [github sample site](https://github.com/ginigangadharan/vagrant-aws-iaas-demo-site.git). We will also enable firewall and root login securities automatically using ansible provisioning. 
 
+  * [How to use this repo - Quick Overview](#how-to-use-this-repo---quick-overview)
+  * [Step 1 - Configure Pre-requisites](#step-1---configure-pre-requisites)
+    + [1.1 Vagrant Installation](#11-vagrant-installation)
+    + [1.2 Plugin Installation - vagrant-aws](#12-plugin-installation---vagrant-aws)
+      - [Notes](#notes)
+    + [1.3 Setup Provider Environment - AWS](#13-setup-provider-environment---aws)
+      - [Box Image](#box-image)
+  * [Step 2 - Create our Virtual Machine - AWS Instance](#step-2---create-our-virtual-machine---aws-instance)
+    + [2.1 Vagrantfile](#21-vagrantfile)
+    + [2.2 Provisioning](#22-provisioning)
+      - [When provisioning happens ?](#when-provisioning-happens--)
+    + [2.3 Let's create the VM](#23-let-s-create-the-vm)
+    + [2.4 Verify our instance](#24-verify-our-instance)
+    + [2.5 Stop or Delete VM](#25-stop-or-delete-vm)
+    + [Troubleshooting](#troubleshooting)
+      - [vagrant up hang at "==> default: Waiting for SSH to become available..."](#vagrant-up-hang-at------default--waiting-for-ssh-to-become-available-)
+
+
 ## How to use this repo - Quick Overview
 
 1. Install Vagrant
